@@ -1,0 +1,131 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+nav {
+  padding: 30px 30px;
+}
+.menu {
+  position: relative;
+}
+.menu::after {
+  content: " ";
+  width: 85%;
+  height: 1px;
+  background-color: gray;
+  left: 10%;
+  bottom: -60%;
+  position: absolute;
+  z-index: 2;
+}
+.toggle {
+  display: none;
+}
+
+.menu li a {
+  color: hsl(220, 13%, 13%);
+  text-decoration: none;
+}
+.menu {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.logo {
+  margin-left: 10%;
+  padding-right: 10px;
+}
+.item {
+  padding: 10px;
+}
+.item a {
+  position: relative;
+}
+
+.item a:after {
+  content: " ";
+  width: 100%;
+  height: 0px;
+  position: absolute;
+  bottom: -2rem;
+  background-color: hsl(26, 100%, 55%);
+  left: 0;
+  transition: 0.5s;
+}
+.item a:hover::after {
+  height: 3px;
+}
+.item a:hover {
+  font-weight: bold;
+}
+
+.cart {
+  width: 25px;
+  height: 25px;
+  margin-left: 30%;
+  background: url("/assets/icon-cart.svg") no-repeat center center;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.user {
+  width: 40px;
+  height: 40px;
+  margin-left: 3%;
+  /* Replace 'user.png' with the path to your actual user icon image */
+  background: url("/assets/image-avatar.png") no-repeat center center;
+  background-size: cover;
+  vertical-align: middle;
+}
+/* mobole menu */
+@media screen and (max-width: 1024px) {
+  nav {
+    background-color: hsl(0, 0%, 100%);
+    padding: 5px 15px;
+  }
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    align-items: center;
+  }
+  .menu::after {
+    display: none;
+  }
+
+  .menu li a {
+    display: block;
+    padding: 20px 5px;
+  }
+  .toggle {
+    display: block;
+    order: 1;
+  }
+  .logo {
+    margin-left: 5%;
+    padding-right: 0;
+    order: 2;
+  }
+
+  .cart {
+    margin-left: 10%;
+    order: 3;
+  }
+  .user {
+    margin-left: 5%;
+    order: 3;
+  }
+  .item {
+    order: 4;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  .active .item {
+    display: block;
+  }
+}
