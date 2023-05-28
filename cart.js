@@ -1,17 +1,17 @@
 const cartSection = document.getElementById("cartitem");
 
-// let cartItems = [];
-
 cartSection.innerHTML = "";
 // const numberElement = document.querySelector(".number");
-const quantity = parseInt(numberElement.textContent.trim());
+let quantity = parseInt(numberElement.textContent.trim());
 const discountAmountElement = document.querySelector(".discount-amount");
 const discountAmount = parseFloat(discountAmountElement.textContent.trim());
 const productTitle = document.getElementById("productTitle");
+const makeCartEmpty = document.getElementsByClassName("makeCartEmpty");
 let totalAmount = 0;
 
 const addToCartBtn = document.getElementById("addToCartBtn");
 addToCartBtn.addEventListener("click", function () {
+  // cartSection.innerHTML = "";
   const quantity = parseInt(numberElement.textContent.trim());
   const discountAmount = parseFloat(discountAmountElement.textContent.trim());
   const total = discountAmount * quantity;
@@ -44,25 +44,20 @@ addToCartBtn.addEventListener("click", function () {
 
   cartItem.appendChild(productDetails);
 
-  // Create the total amount
-  // const totalAmount = document.createElement("div");
-  // totalAmount.classList.add("total-amount");
-  // totalAmount.textContent = total;
-  // cartItem.appendChild(totalAmount);
-
   // Create the delete icon
   const deleteIcon = document.createElement("div");
   deleteIcon.classList.add("delete-icon");
   deleteIcon.innerHTML = `<img src="/assets/icon-delete.svg" alt="delete" />`;
   deleteIcon.addEventListener("click", function () {
     cartSection.removeChild(cartItem);
+    totalAmount -= total;
+    cartTotal.textContent = `$ ${totalAmount}.00`;
   });
   cartItem.appendChild(deleteIcon);
+  totalAmount += total;
 
   // Append the cart item to the cart container
   cartSection.appendChild(cartItem);
-
-  totalAmount += total;
 
   const cartTotal = document.getElementById("total");
   cartTotal.textContent = `$ ${totalAmount}.00`;
