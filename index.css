@@ -260,31 +260,44 @@ li a.active:after {
   background-color: hsl(26, 100%, 55%);
   border: none;
 }
-
-#cartitem {
+#cartItem {
+  display: flex;
+  flex-direction: column;
+}
+.cart-item {
   display: flex;
   justify-content: space-between;
   color: rgb(125, 121, 121);
 }
-.productName {
+
+.productName,
+.productAmount {
   font-size: 14px;
   font-weight: bold;
+  text-align: left;
 }
 .totalProductCalulation {
   display: flex;
 }
-.totalAmount {
+/* total-amount not yet styled in js */
+.total-amount {
   margin-left: 5%;
   display: inline;
   color: #000;
 }
-.produtthumb img {
+.cart-item img {
+  width: 32px;
+  height: 32px;
   border-radius: 5px;
 }
-.cartContainer {
+.delete-icon img {
+  width: 100%;
+  height: 50%;
+}
+/* .cartContainer {
   display: flex;
   flex-direction: column;
-}
+} */
 #hidden,
 .hidden {
   display: none;
